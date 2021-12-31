@@ -1,6 +1,7 @@
 (function () {
   var designTool = {
-    designToolUrl: "http://design-tool-host.s3-website.us-east-2.amazonaws.com",
+    // designToolUrl: "http://design-tool-host.s3-website.us-east-2.amazonaws.com",
+    designToolUrl: __DESIGN_TOOL_URL__,
 
     apiKey: "",
 
@@ -32,7 +33,7 @@
 
       var iframeSrc =
         this.designToolUrl +
-        "/?api_key=" +
+        "?api_key=" +
         this.apiKey +
         "&product_id=" +
         this.productId;
