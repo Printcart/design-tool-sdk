@@ -29,12 +29,16 @@ var designTool = {
     this.apiKey = script.getAttribute("data-unauthToken");
     this.productId = script.getAttribute("data-productId");
 
+    var locationHref = window.location.href;
+
     var iframeSrc =
       this.designToolUrl +
       "?api_key=" +
       this.apiKey +
       "&product_id=" +
-      this.productId;
+      this.productId +
+      "&parentUrl=" +
+      locationHref;
 
     var wrapper = document.createElement("div");
 
