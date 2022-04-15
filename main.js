@@ -5,13 +5,34 @@ var designTool = {
 
   productId: "",
 
+  settings: "",
+
   init: function () {
-    this.createDesignButton();
+    this.settings = this.getSettings();
+
+    var btnId =
+      this.settings && this.settings.buttonId ? this.settings.buttonId : null;
+
+    this.createDesignButton(btnId);
 
     this.createIframe();
   },
 
-  createDesignButton: function () {
+  getSettings: function () {
+    var settings = window.PCDesignToolSettings;
+
+    return settings;
+  },
+
+  createDesignButton: function (btnId) {
+    if (btnId) {
+      var btn = document.getElementById(btnId);
+
+      btn.onclick = this.designBtnOnclickHandler;
+
+      return;
+    }
+
     var designBtn = document.createElement("button");
 
     designBtn.id = "pcdesigntool-design-btn";
@@ -79,5 +100,7 @@ var designTool = {
 };
 
 designTool.init();
+
+// designTool.prototype.open = designTool.designBtnOnclickHandler;
 
 window["PrintcartDesignTool"] = designTool;
