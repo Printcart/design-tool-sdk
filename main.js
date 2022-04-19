@@ -86,7 +86,8 @@ var designTool = {
     document.body.appendChild(wrapper);
   },
 
-  designBtnOnclickHandler: function () {
+  designBtnOnclickHandler: function (event) {
+    event.preventDefault();
     var wrapper = document.getElementById("pcdesigntool-iframe-wrapper");
     var iframe = document.getElementById("pcdesigntool-iframe");
 
