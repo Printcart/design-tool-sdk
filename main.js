@@ -1,21 +1,28 @@
 var designTool = {
-  designToolUrl: __DESIGN_TOOL_URL__,
-
-  apiKey: "",
-
-  productId: "",
-
-  settings: "",
-
   init: function () {
-    this.settings = this.getSettings();
+    var settings = this.getSettings();
 
-    var btnId =
-      this.settings && this.settings.buttonId ? this.settings.buttonId : null;
+    var btnId = settings && settings.buttonId ? settings.buttonId : null;
 
     this.createDesignButton(btnId);
 
     this.createIframe();
+
+    window.addEventListener(
+      "message",
+      (event) => {
+        if (
+          event.origin === __DESIGN_TOOL_URL__ &&
+          event.data.message === "closeDesignTool"
+        ) {
+          var wrapper = document.getElementById("pcdesigntool-iframe-wrapper");
+
+          wrapper.style.opacity = 0;
+          wrapper.style.visibility = "hidden";
+        }
+      },
+      false
+    );
   },
 
   getSettings: function () {
@@ -45,22 +52,6 @@ var designTool = {
   },
 
   createIframe: function () {
-    var script = document.getElementById("printcart-design-tool-sdk");
-
-    this.apiKey = script.getAttribute("data-unauthToken");
-    this.productId = script.getAttribute("data-productId");
-
-    var locationHref = window.location.href;
-
-    var iframeSrc =
-      this.designToolUrl +
-      "?api_key=" +
-      this.apiKey +
-      "&product_id=" +
-      this.productId +
-      "&parentUrl=" +
-      locationHref;
-
     var wrapper = document.createElement("div");
 
     wrapper.id = "pcdesigntool-iframe-wrapper";
@@ -80,7 +71,7 @@ var designTool = {
     iframe.allowfullscreen = 1;
     iframe.mozallowfullscreen = 1;
     iframe.webkitallowfullscreen = 1;
-    iframe.setAttribute("data-src", iframeSrc);
+    // iframe.setAttribute("data-src", iframeSrc);
 
     wrapper.appendChild(iframe);
     document.body.appendChild(wrapper);
@@ -90,13 +81,28 @@ var designTool = {
     event.preventDefault();
     var wrapper = document.getElementById("pcdesigntool-iframe-wrapper");
     var iframe = document.getElementById("pcdesigntool-iframe");
+    var script = document.getElementById("printcart-design-tool-sdk");
+
+    var locationHref = window.location.href;
+
+    var apiKey = script.getAttribute("data-unauthToken");
+    var productId = script.getAttribute("data-productId");
+
+    var designToolUrl = __DESIGN_TOOL_URL__;
+
+    var src =
+      designToolUrl +
+      "?api_key=" +
+      apiKey +
+      "&product_id=" +
+      productId +
+      "&parentUrl=" +
+      locationHref;
+
+    iframe.src = src;
 
     wrapper.style.opacity = 1;
     wrapper.style.visibility = "visible";
-
-    var src = iframe.getAttribute("data-src");
-
-    iframe.src = src;
   },
 };
 
