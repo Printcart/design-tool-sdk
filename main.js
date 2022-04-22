@@ -15,10 +15,21 @@ var designTool = {
           event.origin === __DESIGN_TOOL_URL__ &&
           event.data.message === "closeDesignTool"
         ) {
-          var wrapper = document.getElementById("pcdesigntool-iframe-wrapper");
+          var wrapper = document.getElementById(
+            "pcdesigntool-iframe-wrapper"
+          );
 
           wrapper.style.opacity = 0;
           wrapper.style.visibility = "hidden";
+        }
+
+        if (event.data.message === "finishLoad") {
+          var iframe = document.getElementById("pcdesigntool-iframe");
+
+          iframe.contentWindow.postMessage(
+            { message: "customSettings", settings: settings },
+            __DESIGN_TOOL_URL__
+          );
         }
       },
       false
@@ -41,6 +52,8 @@ var designTool = {
     }
 
     var designBtn = document.createElement("button");
+
+    console.log(designBtn);
 
     designBtn.id = "pcdesigntool-design-btn";
     designBtn.onclick = this.designBtnOnclickHandler;
@@ -83,7 +96,9 @@ var designTool = {
     var iframe = document.getElementById("pcdesigntool-iframe");
     var script = document.getElementById("printcart-design-tool-sdk");
 
-    var locationHref = window.location.href;
+    var url = new URL(window.location.href);
+
+    console.log(url.origin);
 
     var apiKey = script.getAttribute("data-unauthToken");
     var productId = script.getAttribute("data-productId");
@@ -97,7 +112,7 @@ var designTool = {
       "&product_id=" +
       productId +
       "&parentUrl=" +
-      locationHref;
+      url.origin;
 
     iframe.src = src;
 
