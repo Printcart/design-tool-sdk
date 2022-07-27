@@ -1,20 +1,12 @@
 {
   "name": "design-tool-sdk",
-  "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite --port 3101",
-    "dev-tunnel": "ngrok http 3101",
     "build": "vite build",
-    "build-watch": "vite build --watch",
     "preview": "vite preview --port 4101"
   },
   "devDependencies": {
-    "concurrently": "^7.3.0",
-    "ngrok": "^4.3.1",
     "vite": "^2.9.9"
-  },
-  "dependencies": {
-    "localtunnel": "^2.0.2"
   }
 }
