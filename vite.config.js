@@ -6,7 +6,13 @@ module.exports = defineConfig({
     lib: {
       entry: path.resolve(__dirname, "main.js"),
       name: "MyLib",
-      fileName: (format) => `main.${format}.js`,
+      fileName: (format) => {
+        if (format === "umd") {
+          return "main.min.js";
+        }
+
+        return `main.${format}.js`;
+      },
     },
   },
   // server: {
