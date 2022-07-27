@@ -17,7 +17,7 @@ var designTool = {
           event.origin === designToolUrl &&
           event.data.message === "closeDesignTool"
         ) {
-          let wrapper = document.getElementById("pcdesigntool-iframe-wrapper");
+          const wrapper = document.getElementById("pcdesigntool-iframe-wrapper");
 
           wrapper.style.opacity = 0;
           wrapper.style.visibility = "hidden";
