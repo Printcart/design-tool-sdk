@@ -1,26 +1,20 @@
 {
   "name": "design-tool-sdk",
-  "version": "1.0.0",
-  "description": "Printcart SDK for embed Design Tool to web pages.",
-  "main": "main.js",
+  "private": true,
+  "version": "0.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup --config"
+    "dev": "vite --port 3101",
+    "dev-tunnel": "ngrok http 3101",
+    "build": "vite build",
+    "build-watch": "vite build --watch",
+    "preview": "vite preview --port 4101"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Printcart/design-tool-sdk.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Printcart/design-tool-sdk/issues"
-  },
-  "homepage": "https://github.com/Printcart/design-tool-sdk#readme",
   "devDependencies": {
-    "@rollup/plugin-replace": "^3.0.1",
-    "dotenv": "^10.0.0",
-    "rollup": "^2.62.0",
-    "rollup-plugin-terser": "^7.0.2"
+    "concurrently": "^7.3.0",
+    "ngrok": "^4.3.1",
+    "vite": "^2.9.9"
+  },
+  "dependencies": {
+    "localtunnel": "^2.0.2"
   }
 }

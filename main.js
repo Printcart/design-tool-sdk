@@ -1,8 +1,8 @@
 var designTool = {
   init: function () {
-    var settings = this.getSettings();
+    const settings = this.getSettings();
 
-    var btnId = settings && settings.buttonId ? settings.buttonId : null;
+    const btnId = settings && settings.buttonId ? settings.buttonId : null;
 
     this.createDesignButton(btnId);
 
@@ -11,24 +11,24 @@ var designTool = {
     window.addEventListener(
       "message",
       (event) => {
+        const designToolUrl = import.meta.env.VITE_CUSTOMIZER_URL;
+
         if (
-          event.origin === __DESIGN_TOOL_URL__ &&
+          event.origin === designToolUrl &&
           event.data.message === "closeDesignTool"
         ) {
-          var wrapper = document.getElementById(
-            "pcdesigntool-iframe-wrapper"
-          );
+          let wrapper = document.getElementById("pcdesigntool-iframe-wrapper");
 
           wrapper.style.opacity = 0;
           wrapper.style.visibility = "hidden";
         }
 
         if (event.data.message === "finishLoad") {
-          var iframe = document.getElementById("pcdesigntool-iframe");
+          const iframe = document.getElementById("pcdesigntool-iframe");
 
           iframe.contentWindow.postMessage(
             { message: "customSettings", settings: settings },
-            __DESIGN_TOOL_URL__
+            designToolUrl
           );
         }
       },
@@ -37,23 +37,21 @@ var designTool = {
   },
 
   getSettings: function () {
-    var settings = window.PCDesignToolSettings;
+    const settings = window.PCDesignToolSettings;
 
     return settings;
   },
 
   createDesignButton: function (btnId) {
     if (btnId) {
-      var btn = document.getElementById(btnId);
+      let btn = document.getElementById(btnId);
 
       btn.onclick = this.designBtnOnclickHandler;
 
       return;
     }
 
-    var designBtn = document.createElement("button");
-
-    console.log(designBtn);
+    let designBtn = document.createElement("button");
 
     designBtn.id = "pcdesigntool-design-btn";
     designBtn.onclick = this.designBtnOnclickHandler;
@@ -65,14 +63,14 @@ var designTool = {
   },
 
   createIframe: function () {
-    var wrapper = document.createElement("div");
+    let wrapper = document.createElement("div");
 
     wrapper.id = "pcdesigntool-iframe-wrapper";
 
     wrapper.style.cssText =
       "position:fixed;top:0;left:0;width:100vw;height:100vh;opacity:0;visibility:hidden;z-index:99999";
 
-    var iframe = document.createElement("iframe");
+    let iframe = document.createElement("iframe");
 
     iframe.id = "pcdesigntool-iframe";
 
@@ -92,20 +90,18 @@ var designTool = {
 
   designBtnOnclickHandler: function (event) {
     event.preventDefault();
-    var wrapper = document.getElementById("pcdesigntool-iframe-wrapper");
-    var iframe = document.getElementById("pcdesigntool-iframe");
-    var script = document.getElementById("printcart-design-tool-sdk");
+    let wrapper = document.getElementById("pcdesigntool-iframe-wrapper");
+    let iframe = document.getElementById("pcdesigntool-iframe");
+    let script = document.getElementById("printcart-design-tool-sdk");
 
-    var url = new URL(window.location.href);
+    const url = new URL(window.location.href);
 
-    console.log(url.origin);
+    const apiKey = script.getAttribute("data-unauthToken");
+    const productId = script.getAttribute("data-productId");
 
-    var apiKey = script.getAttribute("data-unauthToken");
-    var productId = script.getAttribute("data-productId");
+    const designToolUrl = import.meta.env.VITE_CUSTOMIZER_URL;
 
-    var designToolUrl = __DESIGN_TOOL_URL__;
-
-    var src =
+    const src =
       designToolUrl +
       "?api_key=" +
       apiKey +
