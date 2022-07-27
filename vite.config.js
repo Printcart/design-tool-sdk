@@ -9,11 +9,11 @@ module.exports = defineConfig({
       fileName: (format) => `main.${format}.js`,
     },
   },
-  server: {
-    hmr: {
-      // clientPort: 443,
-      protocol: "ws",
-      port: 3101,
-    },
-  },
+  // server: {
+  //   hmr: {
+  //     // clientPort: 443,
+  //     protocol: "ws",
+  //     port: 3101,
+  //   },
+  // },
 });
