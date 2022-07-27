@@ -8,7 +8,7 @@ module.exports = defineConfig({
       name: "MyLib",
       fileName: (format) => {
         if (format === "umd") {
-          return "main.min.js";
+          return "main.js";
         }
 
         return `main.${format}.js`;
