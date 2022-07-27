@@ -14,5 +14,5 @@ phases:
       - echo Build completed on `date`
 artifacts:
   files:
-    - dist/main.umd.js
+    - dist/main.js
   discard-paths: yes
