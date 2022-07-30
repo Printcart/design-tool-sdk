@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@types/events@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@types/events/-/events-3.0.0.tgz#2862f3f58a9a7f7c3e78d79f130dd4d71c25c2a7"
+  integrity sha512-EaObqwIvayI5a8dCzhFrjKzVwKLxjoG9T6Ppd5CEo07LRKfQ8Yokw54r5+Wq7FaBQ+yXRvQAYPrHwya1/UFt9g==
+
 esbuild-android-64@0.14.50:
   version "0.14.50"
   resolved "https://registry.yarnpkg.com/esbuild-android-64/-/esbuild-android-64-0.14.50.tgz#a46fc80fa2007690e647680d837483a750a3097f"
@@ -127,6 +132,11 @@ esbuild@^0.14.27:
     esbuild-windows-32 "0.14.50"
     esbuild-windows-64 "0.14.50"
     esbuild-windows-arm64 "0.14.50"
+
+events@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/events/-/events-3.3.0.tgz#31a95ad0a924e2d2c419a813aeb2c4e878ea7400"
+  integrity sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==
 
 fsevents@~2.3.2:
   version "2.3.2"

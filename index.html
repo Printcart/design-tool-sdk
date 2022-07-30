@@ -7,14 +7,31 @@
     <title>Vite App</title>
   </head>
   <body>
-    <p>Test Design Tool</p>
-    <script
+    <button id="designer-btn">Open Uploader</button>
+    <!-- <script
       type="module"
       id="printcart-design-tool-sdk"
       async
       data-unauthtoken="1ed23e41e296c45b0c6c9cd722398b90a3cc906301bdebfaac4751cf2df8d06d"
       data-productid="962af342-a2c9-4665-bb5d-cb208258d958"
       src="/main.js"
-    ></script>
+    ></script> -->
+    <script type="module">
+      import PrintcartDesigner from "./src/main.ts";
+
+      const designer = new PrintcartDesigner({
+        token:
+          "1ed23e41e296c45b0c6c9cd722398b90a3cc906301bdebfaac4751cf2df8d06d",
+        productId: "962af342-a2c9-4665-bb5d-cb208258d958",
+      });
+
+      const btn = document.getElementById("designer-btn");
+
+      btn.addEventListener("click", () => {
+        designer.open();
+      });
+
+      designer.on("open", () => console.log("open"));
+    </script>
   </body>
 </html>
