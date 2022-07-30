@@ -4,8 +4,8 @@ const { defineConfig } = require("vite");
 module.exports = defineConfig({
   build: {
     lib: {
-      entry: path.resolve(__dirname, "main.js"),
-      name: "MyLib",
+      entry: path.resolve(__dirname, "src/main.ts"),
+      name: "PrintcartDesigner",
       fileName: (format) => {
         if (format === "umd") {
           return "main.js";
