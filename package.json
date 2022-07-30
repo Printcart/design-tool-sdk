@@ -12,7 +12,7 @@
   },
   "description": "Printcart SDK for Embeded Design Tool.",
   "author": "Printcart <dev@printcart.com> (printcart.com)",
-  "main": "./dist/main.js",
+  "main": "./dist/main.es.js",
   "module": "./dist/main.es.js",
   "exports": {
     ".": {
