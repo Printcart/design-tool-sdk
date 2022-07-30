@@ -7,14 +7,20 @@
     "build-watch": "vite build --watch",
     "preview": "vite preview --port 4101"
   },
-  "description": "Printcart SDK for embed Design Tool to web pages.",
+  "description": "Printcart SDK for Embeded Design Tool.",
+  "author": "Printcart <dev@printcart.com> (printcart.com)",
   "main": "main.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Printcart/design-tool-sdk.git"
   },
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "sdk",
+    "printing",
+    "printingAPI",
+    "api"
+  ],
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Printcart/design-tool-sdk/issues"
   },
