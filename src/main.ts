@@ -28,7 +28,9 @@ class PrintcartDesigner {
     this.productId = config.productId;
     this.options = config.options;
 
-    this.#designerUrl = import.meta.env.VITE_CUSTOMIZER_URL;
+    this.#designerUrl = import.meta.env.VITE_CUSTOMIZER_URL
+      ? import.meta.env.VITE_CUSTOMIZER_URL
+      : "https://customizer.printcart.com";
     //@ts-ignore
     this.#emitter = new EE();
 

@@ -19,4 +19,3 @@ jobs:
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
-          VITE_CUSTOMIZER_URL: https://customizer.printcart.com
