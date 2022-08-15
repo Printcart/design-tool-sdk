@@ -1,10 +1,16 @@
-const path = require("path");
-const { defineConfig } = require("vite");
+import { resolve, dirname } from "path";
+import { defineConfig } from "vite";
+import { fileURLToPath } from "url";
 
-module.exports = defineConfig({
+const _dirname =
+  typeof __dirname !== "undefined"
+    ? __dirname
+    : dirname(fileURLToPath(import.meta.url));
+
+export default defineConfig({
   build: {
     lib: {
-      entry: path.resolve(__dirname, "src/main.ts"),
+      entry: resolve(_dirname, "src/main.ts"),
       name: "PrintcartDesigner",
       fileName: (format) => {
         if (format === "umd") {

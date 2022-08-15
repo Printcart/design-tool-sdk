@@ -1,6 +1,7 @@
 {
   "name": "@printcart/design-tool-sdk",
-  "version": "1.0.7",
+  "version": "1.0.8",
+  "type": "module",
   "files": [
     "dist"
   ],
