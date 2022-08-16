@@ -101,7 +101,7 @@ class PrintcartDesigner {
         }
 
         if (event.data.message === "finishProcess") {
-          this.#emit("upload-success", event.data);
+          this.#emit("upload-success", event.data.data.data);
         }
 
         if (event.data.message === "uploadError") {
