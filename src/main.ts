@@ -101,11 +101,11 @@ class PrintcartDesigner {
         }
 
         if (event.data.message === "finishProcess") {
-          this.#emit("upload-success");
+          this.#emit("upload-success", event.data);
         }
 
         if (event.data.message === "uploadError") {
-          this.#emit("upload-error");
+          this.#emit("upload-error", event.data);
         }
       },
       false
