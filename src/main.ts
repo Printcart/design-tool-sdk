@@ -112,21 +112,28 @@ class PrintcartDesigner {
     );
   }
 
-  open() {
-    const wrapper = document.getElementById(IFRAME_WRAPPER_ID);
-    const iframe = document.getElementById(IFRAME_ID);
-
+  #createDesignUrl() {
     const url = new URL(this.#designerUrl);
 
     url.searchParams.set("api_key", this.token);
     url.searchParams.set("product_id", this.productId);
     url.searchParams.set("parentUrl", window.location.href);
 
+    return url;
+  }
+
+  open() {
+    //TODO: Deduplicate
+    const wrapper = document.getElementById(IFRAME_WRAPPER_ID);
+    const iframe = document.getElementById(IFRAME_ID);
+
     if (!iframe || !(iframe instanceof HTMLIFrameElement) || !wrapper) {
       console.error("Can not find iframe element");
 
       return;
     }
+
+    const url = this.#createDesignUrl();
 
     iframe.src = url.href;
 
@@ -149,6 +156,29 @@ class PrintcartDesigner {
     wrapper.style.visibility = "hidden";
 
     this.#emit("close");
+  }
+
+  editDesign(designId: string) {
+    const url = this.#createDesignUrl();
+
+    url.searchParams.set("design_id", designId);
+    url.searchParams.set("task", "edit");
+
+    const wrapper = document.getElementById(IFRAME_WRAPPER_ID);
+    const iframe = document.getElementById(IFRAME_ID);
+
+    if (!iframe || !(iframe instanceof HTMLIFrameElement) || !wrapper) {
+      console.error("Can not find iframe element");
+
+      return;
+    }
+
+    iframe.src = url.href;
+
+    wrapper.style.opacity = "1";
+    wrapper.style.visibility = "visible";
+
+    this.#emit("edit");
   }
 
   on(event: string, callback: (...args: any[]) => void) {
