@@ -86,7 +86,7 @@ class PrintcartDesigner {
         if (event.data.message === "finishLoad") {
           const iframe = document.getElementById(IFRAME_ID);
 
-          this.#emit("renderFinish");
+          this.#emit("render-finish");
 
           if (
             iframe &&

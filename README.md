@@ -10,7 +10,7 @@
 </p>
 </div>
 
-Embeb Printcart Designer to your web application with our simple JS SDK.
+Embeb [Printcart Designer](https://printcart.com) to your web application with our simple JS SDK.
 
 ## Installation
 
@@ -49,7 +49,7 @@ const designer = new PrintcartDesigner({
 Using CDN-hosted copy of the library:
 
 ```js
-<script src="https://unpkg.com/@printcart/design-tool-sdk"></script>
+<script src="https://unpkg.com/@printcart/design-tool-sdk/dist/main.js"></script>
 
 <script>
   const designer = new PrintcartDesigner({
@@ -157,14 +157,14 @@ designer.on("closed", function () {
 });
 ```
 
-### `renderFinish`
+### `render-finish`
 
 Fired when Designer fully loaded.
 
 **Example**
 
 ```js
-designer.on("renderFinish", function () {
+designer.on("render-finish", function () {
   console.log("Designer rendered.");
 });
 ```
