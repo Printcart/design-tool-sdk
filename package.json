@@ -29,7 +29,12 @@
     "sdk",
     "printing",
     "printingAPI",
-    "api"
+    "api",
+    "product customizer",
+    "customizer",
+    "ecommerce",
+    "web2print",
+    "web-to-print"
   ],
   "license": "MIT",
   "bugs": {
