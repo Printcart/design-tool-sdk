@@ -48,7 +48,7 @@ const designer = new PrintcartDesigner({
 
 Using CDN-hosted copy of the library:
 
-```
+```js
 <script src="https://unpkg.com/@printcart/design-tool-sdk"></script>
 
 <script>
