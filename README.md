@@ -14,29 +14,25 @@ Embeb Printcart Designer to your web application with our simple JS SDK.
 
 ## Installation
 
-Install with npm
-
-npm
+**npm**
 
 ```bash
 npm install @printcart/design-tool-sdk
 ```
 
-yarn
+**yarn**
 
 ```bash
 yarn add @printcart/design-tool-sdk
 ```
 
-unpkg
+**unpkg**
 
 ```
 <script src="https://unpkg.com/@printcart/design-tool-sdk"></script>
 ```
 
 ## Usage
-
-### Set up Printcart Designer in your app
 
 Using package:
 
@@ -52,6 +48,7 @@ const designer = new PrintcartDesigner({
 
 Using CDN-hosted copy of the library:
 
+```
 <script src="https://unpkg.com/@printcart/design-tool-sdk"></script>
 
 <script>
@@ -61,6 +58,7 @@ Using CDN-hosted copy of the library:
     options: {},
   });
 </script>
+```
 
 ## Options
 
@@ -85,7 +83,7 @@ The Product ID that you want to assign the designer to.
 
 Provide options to config the Designer UI and locale.
 
-`Parameters`
+**Parameters**
 
 - `processBtnBgColor`: _string | null_ - Change the **Process** button background color.
 - `logoUrl`: _string | null_ - Add your branding logo to Designer.
@@ -226,3 +224,5 @@ designer.on("edit", function () {
   console.log("Designer on edit mode");
 });
 ```
+
+<img src="https://www.printcart.com/_next/static/image/src/common/assets/image/appModern/printcart-logo.db99b3d8b92bca6ff946c0869b114589.png" alt="Printcart" />
