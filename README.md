@@ -225,4 +225,4 @@ designer.on("edit", function () {
 });
 ```
 
-<img src="https://www.printcart.com/_next/static/image/src/common/assets/image/appModern/printcart-logo.db99b3d8b92bca6ff946c0869b114589.png" alt="Printcart" />
+<img src="https://www.printcart.com/_next/static/image/src/common/assets/image/appModern/printcart-logo.db99b3d8b92bca6ff946c0869b114589.png" alt="Printcart" width="200px" />
