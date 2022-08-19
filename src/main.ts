@@ -80,13 +80,13 @@ class PrintcartDesigner {
           wrapper.style.opacity = "0";
           wrapper.style.visibility = "hidden";
 
-          this.#emit("close");
+          this.#emit("closed");
         }
 
         if (event.data.message === "finishLoad") {
           const iframe = document.getElementById(IFRAME_ID);
 
-          this.#emit("onload");
+          this.#emit("renderFinish");
 
           if (
             iframe &&
@@ -126,7 +126,7 @@ class PrintcartDesigner {
     return url;
   }
 
-  open() {
+  render() {
     //TODO: Deduplicate
     const wrapper = document.getElementById(IFRAME_WRAPPER_ID);
     const iframe = document.getElementById(IFRAME_ID);
@@ -144,7 +144,7 @@ class PrintcartDesigner {
     wrapper.style.opacity = "1";
     wrapper.style.visibility = "visible";
 
-    this.#emit("open");
+    this.#emit("rendered");
   }
 
   close() {
@@ -159,7 +159,7 @@ class PrintcartDesigner {
     wrapper.style.opacity = "0";
     wrapper.style.visibility = "hidden";
 
-    this.#emit("close");
+    this.#emit("closed");
   }
 
   editDesign(designId: string) {
