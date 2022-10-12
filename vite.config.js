@@ -12,8 +12,9 @@ export default defineConfig({
     lib: {
       entry: resolve(_dirname, "src/main.ts"),
       name: "PrintcartDesigner",
+      formats: ['iife', 'es'],
       fileName: (format) => {
-        if (format === "umd") {
+        if (format === "iife") {
           return "main.js";
         }
 
@@ -21,11 +22,4 @@ export default defineConfig({
       },
     },
   },
-  // server: {
-  //   hmr: {
-  //     // clientPort: 443,
-  //     protocol: "ws",
-  //     port: 3101,
-  //   },
-  // },
 });

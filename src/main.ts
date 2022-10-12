@@ -29,11 +29,17 @@ class PrintcartDesigner {
     this.productId = config.productId;
     this.options = config.options;
 
-    this.#designerUrl = this.options?.designerUrl
-      ? this.options.designerUrl
-      : import.meta.env.VITE_CUSTOMIZER_URL
-      ? import.meta.env.VITE_CUSTOMIZER_URL
-      : "https://customizer.printcart.com";
+    // this.#designerUrl = this.options?.designerUrl
+    //   ? this.options.designerUrl
+    //   : import.meta.env.VITE_CUSTOMIZER_URL
+    //   ? import.meta.env.VITE_CUSTOMIZER_URL
+    //   : "https://customizer.printcart.com";
+
+    this.#designerUrl =
+      import.meta.env.MODE === "production"
+        ? "https://customizer.printcart.com"
+        : import.meta.env.VITE_CUSTOMIZER_URL;
+
     //@ts-ignore
     this.#emitter = new EE();
 
