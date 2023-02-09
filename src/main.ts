@@ -11,6 +11,10 @@ interface IOptions {
   processBtnBgColor?: string;
   logoUrl?: string;
   designerUrl?: string;
+  showRuler: boolean;
+  showGrid: boolean;
+  showBleedLine: boolean;
+  showDimensions: boolean;
 }
 
 const IFRAME_WRAPPER_ID = "pc-designer-iframe-wrapper";
