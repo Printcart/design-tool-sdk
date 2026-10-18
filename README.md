@@ -87,6 +87,9 @@ Provide options to config the Designer UI and locale.
 
 - `processBtnBgColor`: _string | null_ - Change the **Process** button background color.
 - `logoUrl`: _string | null_ - Add your branding logo to Designer.
+- `variantId`: _string | undefined_ - Open the Designer on this store variant (sent as `variant_id`; the Designer loads the variant's print sides). Since 1.7.0.
+- `selectedChoices`: _object | undefined_ - The buyer's picked option choices, e.g. `{ Wood: "Walnut" }` (passed with the Designer settings). Since 1.7.0.
+- `locale`: _string | undefined_ - Buyer UI language, e.g. `"en"`, `"fr"` or `"fr-CA"` (sent as `locale`; falls back to the browser language). Since 1.7.0.
 
 ## Methods
 
@@ -107,6 +110,16 @@ var openDesignerButton = document.getElementById("your-button-id");
 openDesignerButton.addEventListener("click", function () {
   designer.open();
 });
+```
+
+### `setVariant`
+
+Switch an open Designer to another variant without reloading it (for example when the buyer changes a colour or size on the product page). The next `render()` / `editDesign()` also opens on that variant. Since 1.7.0.
+
+**Example**
+
+```js
+designer.setVariant("variant-id", { Wood: "Cherry" });
 ```
 
 ### `close`
