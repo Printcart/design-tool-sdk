@@ -1,6 +1,6 @@
 {
   "name": "@printcart/design-tool-sdk",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "type": "module",
   "files": [
     "dist"
@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "vite --port 3101",
     "build": "vite build",
+    "prepare": "vite build",
     "build-watch": "vite build --watch",
     "preview": "vite preview --port 4101"
   },
