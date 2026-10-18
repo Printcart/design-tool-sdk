@@ -15,6 +15,12 @@ interface IOptions {
   showGrid: boolean;
   showBleedLine: boolean;
   showDimensions: boolean;
+  /** Store-platform variant id the buyer picked (e.g. a Wix Stores variant). Sent as `variant_id`. */
+  variantId?: string;
+  /** Picked option choices, e.g. { Wood: "Walnut", Size: "30x20" }. Sent with `customSettings`. */
+  selectedChoices?: Record<string, string>;
+  /** Buyer UI locale, e.g. "en", "fr" or "fr-CA". Sent as `locale`. */
+  locale?: string;
 }
 
 const IFRAME_WRAPPER_ID = "pc-designer-iframe-wrapper";
@@ -133,6 +139,14 @@ class PrintcartDesigner {
     url.searchParams.set("product_id", this.productId);
     url.searchParams.set("parentUrl", window.location.href);
 
+    if (this.options?.variantId) {
+      url.searchParams.set("variant_id", this.options.variantId);
+    }
+
+    if (this.options?.locale) {
+      url.searchParams.set("locale", this.options.locale);
+    }
+
     return url;
   }
 
@@ -193,6 +207,31 @@ class PrintcartDesigner {
     wrapper.style.visibility = "visible";
 
     this.#emit("edit");
+  }
+
+  /**
+   * Switch the open designer to another variant without reloading it.
+   * The next render()/editDesign() also opens on this variant.
+   */
+  setVariant(variantId: string, selectedChoices?: Record<string, string>) {
+    if (!variantId) return this;
+
+    this.options = {
+      ...(this.options as IOptions),
+      variantId,
+      ...(selectedChoices ? { selectedChoices } : {}),
+    };
+
+    const iframe = document.getElementById(IFRAME_ID);
+
+    if (iframe && iframe instanceof HTMLIFrameElement && iframe.contentWindow) {
+      iframe.contentWindow.postMessage(
+        { message: "pcVariantChanged", variantId },
+        this.#designerUrl
+      );
+    }
+
+    return this;
   }
 
   on(event: string, callback: (...args: any[]) => void) {
